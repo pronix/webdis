@@ -21,6 +21,7 @@ bash "install-webdis" do
 	code <<-EOC
 		cd /tmp/webdis
 		make
+    make install
 	EOC
 end
 
