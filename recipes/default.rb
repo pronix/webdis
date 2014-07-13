@@ -38,4 +38,4 @@ service 'redis' do
 	action [:enable, :start]
 end
 
-execute "/usr/local/bin/webdis &"
+execute "sudo -u nobody /usr/local/bin/webdis &"
