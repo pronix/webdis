@@ -23,6 +23,7 @@ bash "install-webdis" do
 		make
     make install
 	EOC
+  not_if { File.exists? "/usr/local/bin/webdis" }
 end
 
 service "iptables" do
