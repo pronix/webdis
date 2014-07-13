@@ -7,6 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
+package 'redis' do
+	action :install
+end
+
 package "libevent-devel" do
 	action :install
 end
@@ -29,3 +33,9 @@ end
 service "iptables" do
 	action [:disable, :stop]
 end
+
+service 'redis' do
+	action [:enable, :start]
+end
+
+execute "/usr/local/bin/webdis &"
