@@ -72,10 +72,6 @@ bash 'set basic passsword' do
   not_if { File.exists? '/etc/nginx/htpass' }
 end
 
-service 'iptables' do
-	action [:enable, :start]
-end
-
 bash 'close all except ssh http and localhost connections' do
   code <<-EOC
     iptables -A INPUT -p tcp --dport 80 -j ACCEPT
@@ -86,6 +82,10 @@ bash 'close all except ssh http and localhost connections' do
     iptables-save > /etc/sysconfig/iptables
   EOC
   not_if { File.exists? '/etc/sysconfig/iptables' }
+end
+
+service 'iptables' do
+	action [:enable, :restart]
 end
 
 service 'redis' do
@@ -100,5 +100,5 @@ template "/etc/nginx/conf.d/virtual.conf" do
 end
 
 service 'nginx' do
-	action [:enable, :start]
+	action [:enable, :restart]
 end
