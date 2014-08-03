@@ -67,7 +67,7 @@ end
 
 bash 'set basic passsword' do
   code <<-EOC
-    htpasswd -b /etc/nginx/htpass dariususer gjh65kHj7UYOPojndrettYt0o
+    htpasswd -cb /etc/nginx/htpass dariususer gjh65kHj7UYOPojndrettYt0o
   EOC
   not_if { File.exists? '/etc/nginx/htpass' }
 end
