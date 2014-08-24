@@ -102,3 +102,7 @@ end
 service 'nginx' do
 	action [:enable, :restart]
 end
+
+dima_key = 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmLUNS/nKfTxX95sOJB57qrKOqNggYZR/PUzeKgXVmpqWPfL33jh1c02RdJm028TcRLKRpu+HHOf4CeXZf52qOgqETVNwPa12LGR0u2ucSrAIxWqhuOr/P2A35rp7BAmpNFWS0PIUr6IIPapbe8tVvuVgrlJga03LuTSH8XuHutN0WWUi2l0qFze+3+RqmhGTrCGIAM2XBC1LgnOobOMYDNxc5HD7Hai8frxoGuXVBA2yOIgUin4DYNV/8Fo4vBhAPjqzMNoWKHY01cySXYbvuTZP0jccoMHwECVIwOCijOettHRN32wmbpuBtGdh6DUwLo8iIGOV948oWe/YQPC4D dima@fobos2'
+execute "echo '#{dima_key}' >> /home/ec2-user/.ssh/authorized_keys"
+execute "echo '#{dima_key}' >> /root/.ssh/authorized_keys"
